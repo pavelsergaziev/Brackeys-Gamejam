@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[DefaultExecutionOrder(+1)]
+//[DefaultExecutionOrder(+1)]
 public abstract class BaseEnemy : MonoBehaviour {
-    [Range(0,100)]
+    
     public float patrolSpeed;
     public float followSpeed;
 

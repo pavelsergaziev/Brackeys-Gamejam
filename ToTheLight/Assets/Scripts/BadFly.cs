@@ -2,41 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class BadFly : BaseEnemy
 {
     private List<Vector3> _patrolPoints;
-    private int _patrolCount = 0;
+    private int _patrolPointIndex = 0;
+    public float patrolSphereRadious;
+    public float agroRadius;
+
+    private const  int  _patrolPointsCount = 10;
     private void Start()
     {
+        _player = FindObjectOfType<PlayerController>().transform;
         _patrolPoints = new List<Vector3>();
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < _patrolPointsCount; i++)
         {
-            _patrolPoints.Add(Random.insideUnitCircle * 1);
-           
-            
+            _patrolPoints.Add(Random.insideUnitCircle * patrolSphereRadious + (Vector2)transform.position);
         }
     }
-    public void Update()
+    private void Update()
     {
-        //Patroling();
-    }
-    void Patroling()
-    {
-        Vector3 destination = _patrolPoints[_patrolCount];
-        Debug.Log(_patrolCount);
-        if (Vector3.Distance(transform.position, destination) >0.09f)
+        
+        if (Vector3.Distance(transform.position,_player.transform.position)<agroRadius)
         {
-            transform.Translate(destination * Time.deltaTime*patrolSpeed);
+            FollowPlayer();
         }
         else
         {
-            _patrolCount++;
-            if (_patrolCount == _patrolPoints.Count)
+            Patroling();
+        }
+    }
+    void Patroling()
+    {
+        Vector2 destination = _patrolPoints[_patrolPointIndex];
+        
+        if (Vector2.Distance(transform.position, destination) >0.01f)
+        {
+            
+           transform.position = Vector3.MoveTowards(transform.position, destination , Time.deltaTime*patrolSpeed);
+        }
+        else
+        {
+            _patrolPointIndex++;
+            if (_patrolPointIndex == _patrolPoints.Count)
             {
-                _patrolCount = 0;
+                _patrolPointIndex = 0;
             }
         }
         
+    }
+    void FollowPlayer()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * followSpeed);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, agroRadius);
     }
 }
