@@ -616,7 +616,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: d5355c3e-1a30-4e23-b4a4-1505bf0ae79d
   projectName: ToTheLight
   organizationId: deniskotenko
