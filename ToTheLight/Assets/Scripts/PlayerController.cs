@@ -8,13 +8,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _playerRb;
-    public float jumpforce;
-    public float moveSpeed;
+    public float jumpforce = 55;
+    public float moveSpeed = 2;
     public PlayerCondition playerCondition;
-    
+    public bool setRBValuesByEditor = false;
+
+
+    private const float rbMass = 0.5f;
+    private const float rbGravityScale = 0.5f;
     private void Start()
     {
         _playerRb = GetComponent<Rigidbody2D>();
+        if (!setRBValuesByEditor)
+        {
+            SetRbValues();
+        }
         
     }
 
@@ -45,6 +53,12 @@ public class PlayerController : MonoBehaviour
             _playerRb.AddForce(Vector2.up * jumpforce);
         }
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * moveSpeed);
+    }
+
+    void SetRbValues()
+    {
+        _playerRb.mass = rbMass;
+        _playerRb.gravityScale = rbGravityScale;
     }
 }
 

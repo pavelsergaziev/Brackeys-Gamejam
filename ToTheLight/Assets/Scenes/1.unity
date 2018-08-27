@@ -249,10 +249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b1fe5e4b77fe94a9cf1ffc5e4a6507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 0.3
-  followSpeed: 0.6
-  patrolSphereRadious: 5
+  patrolSpeed: 5
+  followSpeed: 2
   agroRadius: 2.5
+  patrolSphereRadious: 1
 --- !u!58 &78348149
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -564,9 +564,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2d464cbd8c24f4bac656bc8db7cdcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpforce: 1
-  moveSpeed: 1
+  jumpforce: 55
+  moveSpeed: 2
   playerCondition: 1
+  setRBValuesByEditor: 0
 --- !u!50 &1599621049
 Rigidbody2D:
   serializedVersion: 4
