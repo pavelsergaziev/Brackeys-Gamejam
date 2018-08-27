@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 876957843
+    locked: 0
+  - name: Level Layout
+    uniqueID: 776296419
+    locked: 0
+  - name: Traps
+    uniqueID: 4025492521
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Monster
+    uniqueID: 1007238151
+    locked: 0
+  - name: Player
+    uniqueID: 1862412621
     locked: 0

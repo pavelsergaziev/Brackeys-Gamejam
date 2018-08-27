@@ -36,7 +36,7 @@ public class ScreenLighting : MonoBehaviour {
     {
         while (true)
         {
-            float targetAlpha = ((_player.position - _mainLight.position).magnitude * _alphaCorrectionValue) / _startingDistanceToLight;
+            float targetAlpha = (Vector3.Distance(_player.position,_mainLight.position) * _alphaCorrectionValue) / _startingDistanceToLight;
 
             if (targetAlpha > _maxAlpha)
                 targetAlpha = _maxAlpha;
