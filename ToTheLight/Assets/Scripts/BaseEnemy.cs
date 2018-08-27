@@ -11,7 +11,7 @@ public abstract class BaseEnemy : MonoBehaviour {
     public float agroRadius;
 
     protected Transform _player;
-    private void Start()
+    protected virtual void Start()
     {
         _player = FindObjectOfType<PlayerController>().transform;
     }
