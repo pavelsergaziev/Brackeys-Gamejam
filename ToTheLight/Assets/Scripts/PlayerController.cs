@@ -11,21 +11,11 @@ public class PlayerController : MonoBehaviour
     public float jumpforce = 55;
     public float moveSpeed = 2;
     public PlayerCondition playerCondition;
-<<<<<<< HEAD
     public bool setRBValuesByEditor = false;
-
 
     private const float rbMass = 0.5f;
     private const float rbGravityScale = 0.5f;
-    private void Start()
-    {
-        _playerRb = GetComponent<Rigidbody2D>();
-        if (!setRBValuesByEditor)
-        {
-            SetRbValues();
-        }
-        
-=======
+
 
     private PlayerAnimationController _animation;
     
@@ -33,7 +23,11 @@ public class PlayerController : MonoBehaviour
     {
         _playerRb = GetComponent<Rigidbody2D>();
         _animation = GetComponent<PlayerAnimationController>();
->>>>>>> animations
+
+        if (!setRBValuesByEditor)
+        {
+            SetRbValues();
+        }
     }
 
     // Update is called once per frame
