@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpforce = 55;
     public float moveSpeed = 2;
     public PlayerCondition playerCondition;
+<<<<<<< HEAD
     public bool setRBValuesByEditor = false;
 
 
@@ -24,6 +25,15 @@ public class PlayerController : MonoBehaviour
             SetRbValues();
         }
         
+=======
+
+    private PlayerAnimationController _animation;
+    
+    private void Start()
+    {
+        _playerRb = GetComponent<Rigidbody2D>();
+        _animation = GetComponent<PlayerAnimationController>();
+>>>>>>> animations
     }
 
     // Update is called once per frame
@@ -45,14 +55,25 @@ public class PlayerController : MonoBehaviour
     }
     void ButterflyMove()
     {
+        bool isMoving = false;
+
         var horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (horizontal != 0)
+            isMoving = true;
+
         var jump = Input.GetButtonDown("Jump");
         if (jump)
         {
             _playerRb.velocity = Vector2.zero;
             _playerRb.AddForce(Vector2.up * jumpforce);
+
+            isMoving = true;
         }
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * moveSpeed);
+
+
+        _animation.PlayAnimation(isMoving);
     }
 
     void SetRbValues()
