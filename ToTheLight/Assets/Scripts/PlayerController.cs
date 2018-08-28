@@ -13,13 +13,17 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 2;
     public PlayerCondition playerCondition;
     public bool setRBValuesByEditor = false;
+    public float transformationTime = 5;
 
     private const float rbMass = 0.5f;
     private const float rbGravityScale = 0.5f;
     private int _leafCount = 0;
     private bool _isTransformating = false;
+    private bool _canClimb = false;
 
     private PlayerAnimationController _animation;
+
+
     
     private void Start()
     {
@@ -35,18 +39,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (_leafCount==3)
+        if (_leafCount == 3)
         {
-            playerCondition = PlayerCondition.uncontrollable;
-            if (true)
-            {
-
-            }
-
+            StartCoroutine(Transformation());
         }
         switch (playerCondition)
-        {
-            case PlayerCondition.bug:
+        {  
+            case PlayerCondition.caterpillar:
                 CaterpillarMove();
                 break;
             case PlayerCondition.butterfly:
@@ -91,7 +90,12 @@ public class PlayerController : MonoBehaviour
     void CaterpillarMove()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
+        var vertical = Input.GetAxisRaw("Vertical");
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * moveSpeed);
+        if (_canClimb)
+        {
+            transform.Translate(Vector2.up * vertical * Time.deltaTime * moveSpeed);
+        }
     }
 
     void SetRbValues()
@@ -99,9 +103,43 @@ public class PlayerController : MonoBehaviour
         _playerRb.mass = rbMass;
         _playerRb.gravityScale = rbGravityScale;
     }
-    void Transformation()
+    IEnumerator Transformation()
+    {
+        
+        if(!_isTransformating)
+        {
+            Debug.Log("Трансофрмация начата");
+            _isTransformating = true;
+            _leafCount = 0;
+            playerCondition = PlayerCondition.uncontrollable;
+            /// Animation
+            yield return new WaitForSeconds(transformationTime);
+            playerCondition = PlayerCondition.butterfly;            
+            Debug.Log("Трансофрмация завершена");
+        }
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Leaf")
+        {
+            _leafCount++;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "Climb" && playerCondition == PlayerCondition.caterpillar)
+        {
+            _playerRb.isKinematic = true;
+            _canClimb = true;
+        }
+    }
+    private void OnTriggerExit2D (Collider2D collision)
     {
 
+        if (collision.tag == "Climb"&&playerCondition == PlayerCondition.caterpillar)
+        {
+            _playerRb.isKinematic = false;
+            _canClimb = false;
+        }
     }
 
 }

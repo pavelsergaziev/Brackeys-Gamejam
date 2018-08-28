@@ -81,7 +81,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -202,7 +202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolSpeed: 2
   agroRadius: 3
-  dropSpeed: 4
+  dropSpeed: 6
+  patrolPoints: []
+  trigger: {fileID: 0}
 --- !u!212 &212016233230740530
 SpriteRenderer:
   m_ObjectHideFlags: 1
