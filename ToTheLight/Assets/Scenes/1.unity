@@ -955,6 +955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minBlinkDelay: 2
   _maxBlinkDelay: 5
+  _blinkAnimationSpeed: 0
+  _mothMoveAnimationSpeed: 0
 --- !u!1 &1630880813
 GameObject:
   m_ObjectHideFlags: 0
