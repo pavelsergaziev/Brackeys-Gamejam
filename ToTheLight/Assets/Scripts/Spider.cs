@@ -10,6 +10,7 @@ public class Spider : BaseEnemy
     private bool _isPatroling = true;
     private TrailRenderer _web;
     private bool _isDead = false;
+    public Trigger trigger;
 
     protected override void Start()
     {
@@ -53,7 +54,7 @@ public class Spider : BaseEnemy
     }
     private void Update()
     {
-        if (Vector3.Distance(transform.position, _player.transform.position) < agroRadius)
+        if (trigger.isTriggered)
         {
             _isPatroling = false;
         }
@@ -88,6 +89,14 @@ public class Spider : BaseEnemy
         _web.time = 5;
         _web.startWidth = 0.019f;
         _web.enabled = false;
-
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        var playerScript = other.GetComponent<PlayerController>();
+        if (playerScript != null)
+        {
+            Debug.Log("нанесен урон");
+        }
+    }
+    
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private const float rbMass = 0.5f;
     private const float rbGravityScale = 0.5f;
-
+    private int _leafCount = 0;
+    private bool _isTransformating = false;
 
     private PlayerAnimationController _animation;
     
@@ -33,9 +35,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if (_leafCount==3)
+        {
+            playerCondition = PlayerCondition.uncontrollable;
+            if (true)
+            {
+
+            }
+
+        }
         switch (playerCondition)
         {
             case PlayerCondition.bug:
+                CaterpillarMove();
                 break;
             case PlayerCondition.butterfly:
                 ButterflyMove();
@@ -66,8 +78,20 @@ public class PlayerController : MonoBehaviour
         }
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * moveSpeed);
 
-
-        _animation.PlayAnimation(isMoving);
+        if (_animation!=null)
+        {
+            _animation.PlayAnimation(isMoving);
+        }
+        else
+        {
+            throw new Exception("Отсутствует аниматор на обьекте "+ name);
+        }
+        
+    }
+    void CaterpillarMove()
+    {
+        var horizontal = Input.GetAxisRaw("Horizontal");
+        transform.Translate(Vector2.right * horizontal * Time.deltaTime * moveSpeed);
     }
 
     void SetRbValues()
@@ -75,5 +99,10 @@ public class PlayerController : MonoBehaviour
         _playerRb.mass = rbMass;
         _playerRb.gravityScale = rbGravityScale;
     }
+    void Transformation()
+    {
+
+    }
+
 }
 
