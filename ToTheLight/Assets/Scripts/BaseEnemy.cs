@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class BaseEnemy : MonoBehaviour {
     
     public float patrolSpeed;
-    public float followSpeed;
+    
     public float agroRadius;
 
     protected Transform _player;

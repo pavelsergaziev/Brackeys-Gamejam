@@ -9,12 +9,13 @@ public class BadFly : BaseEnemy
     private List<Vector3> _patrolPoints;
     private int _patrolPointIndex = 0;
     public float patrolSphereRadious;
-    
+    public float followSpeed;
 
     private const  int  _patrolPointsCount = 10;
-    private void Start()
+
+    protected override void Start()
     {
-        _player = FindObjectOfType<PlayerController>().transform;
+        base.Start();
         _patrolPoints = new List<Vector3>();
         for (int i = 0; i < _patrolPointsCount; i++)
         {
