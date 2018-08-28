@@ -90,7 +90,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         switch (evolutionStage)
         {
-            case PlayerCondition.bug:
+            case PlayerCondition.caterpillar:
                 {
 
                     break;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PlayerCondition  {
 
-	bug,
+	caterpillar,
     butterfly,
     uncontrollable,
 }
