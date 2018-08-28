@@ -88,7 +88,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0
-    functionName: AnimationEvent
+    functionName: MoveComplete
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: c60a36fe81e0f6741bc4bb9207bd1dff,
       type: 3}
@@ -96,7 +96,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.25
-    functionName: AnimationEvent
+    functionName: MoveComplete
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: c60a36fe81e0f6741bc4bb9207bd1dff,
       type: 3}
