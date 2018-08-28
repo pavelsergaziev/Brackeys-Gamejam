@@ -122,7 +122,7 @@ public class PlayerAnimationController : MonoBehaviour {
                     _moveStateName = "Caterpillar Move";
                     break;
                 }
-            case 2://играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
+            case 2:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
                 {
 
                     break;
