@@ -7,10 +7,11 @@ using UnityEngine;
 public abstract class BaseEnemy : MonoBehaviour {
     
     public float patrolSpeed;
-    public float followSpeed;
+    
+    public float agroRadius;
 
     protected Transform _player;
-    private void Start()
+    protected virtual void Start()
     {
         _player = FindObjectOfType<PlayerController>().transform;
     }

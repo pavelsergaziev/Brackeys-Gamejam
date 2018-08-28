@@ -9,12 +9,13 @@ public class BadFly : BaseEnemy
     private List<Vector3> _patrolPoints;
     private int _patrolPointIndex = 0;
     public float patrolSphereRadious;
-    public float agroRadius;
+    public float followSpeed;
 
     private const  int  _patrolPointsCount = 10;
-    private void Start()
+
+    protected override void Start()
     {
-        _player = FindObjectOfType<PlayerController>().transform;
+        base.Start();
         _patrolPoints = new List<Vector3>();
         for (int i = 0; i < _patrolPointsCount; i++)
         {
@@ -56,9 +57,5 @@ public class BadFly : BaseEnemy
     {
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * followSpeed);
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, agroRadius);
-    }
+   
 }
