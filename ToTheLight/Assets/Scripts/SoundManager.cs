@@ -72,10 +72,10 @@ public class SoundManager : MonoBehaviour {
     IEnumerator FadeOut(Sound sound, float fadeTime, bool stopAfterFade)
     {
         float t = 0f;
-
+        float x = sound.source.volume;
         while (t<fadeTime)
         {
-            sound.source.volume = Mathf.Lerp(sound.source.volume, 0f, t / fadeTime);
+            sound.source.volume = Mathf.Lerp(x, 0f, t / fadeTime);
             t += Time.deltaTime;
             yield return null;
         }
@@ -95,14 +95,14 @@ public class SoundManager : MonoBehaviour {
     IEnumerator PlayAfter(Sound sound1,Sound sound2)
     {
         
-        yield return new WaitForSeconds(sound1.clip.length-0.1f);
-        CrossFade(sound2, sound1, 0.05f, 0.1f, true);
+        yield return new WaitForSeconds(sound1.clip.length-0.01f);
+        CrossFade(sound2, sound1, 0.1f, 0.5f, true);
     }
     public void Transformation()
     {
         CrossFade(Array.Find(sounds, sound => sound.name == "TransformationTheme"),
                       Array.Find(sounds, sound => sound.name == "CatarpillarTheme"),
-                      .1f, 2f, true);
+                      5f, 5f, false);
         StartCoroutine(PlayAfter(Array.Find(sounds, sound => sound.name == "TransformationTheme"),
                   Array.Find(sounds, sound => sound.name == "ButterflyMusTheme_1")));
     }
