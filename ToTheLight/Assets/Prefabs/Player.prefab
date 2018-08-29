@@ -103,7 +103,7 @@ MonoBehaviour:
   moveSpeed: 2
   playerCondition: 0
   setRBValuesByEditor: 0
-  transformationTime: 5
+  transformationTime: 7
 --- !u!212 &212944928414809938
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: -10}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.4
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -795,6 +795,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc8a1233503c6c40b4ac0370709b534, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1312197358
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.9778277
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -6.4292564
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb41816be282aee459ccfaa477a69997, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1777804341
 GameObject:

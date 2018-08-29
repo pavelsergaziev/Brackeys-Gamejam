@@ -13,14 +13,19 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 2;
     public PlayerCondition playerCondition;
     public bool setRBValuesByEditor = false;
-    public float transformationTime = 5;
+
+    public float transformationTime = 8;
+
+    public float transformationTime = 8;
     public float transformationExitTime = 2;
+
 
     private const float rbMass = 0.5f;
     private const float rbGravityScale = 0.5f;
     private int _leafCount = 0;
     private bool _isTransformating = false;
     private bool _canClimb = false;
+    private SoundManager _soundManager;
 
     private PlayerAnimationController _animation;
     private bool _isMoving;
@@ -31,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _soundManager = FindObjectOfType<SoundManager>();
         _playerRb = GetComponent<Rigidbody2D>();
         _animation = GetComponent<PlayerAnimationController>();
 
@@ -122,7 +128,11 @@ public class PlayerController : MonoBehaviour
         
         if(!_isTransformating)
         {
-            Debug.Log("Трансофрмация начата");      
+
+            Debug.Log("Трансофрмация начата");
+            _soundManager.Transformation();
+
+            
             _isTransformating = true;
             _leafCount = 0;
             playerCondition = PlayerCondition.uncontrollable;
