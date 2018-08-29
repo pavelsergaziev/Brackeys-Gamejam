@@ -1,19 +1,18 @@
 ﻿using System.Collections;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAnimationController : MonoBehaviour {
 
     private Animator _animator;
 
+    private ScreenLighting _screenLighting;
+
     [SerializeField]
     private float _minBlinkDelay;
     [SerializeField]
     private float _maxBlinkDelay;
-    [SerializeField]
-    private float _blinkAnimationSpeed;
-    [SerializeField]
-    private float _mothMoveAnimationSpeed;
     
     private bool _doBlink;
 
@@ -31,16 +30,22 @@ public class PlayerAnimationController : MonoBehaviour {
     private void Start()
     {
         _animator = GetComponent<Animator>();
+
+        _screenLighting = FindObjectOfType<ScreenLighting>();
+
         _canStopMoving = true;
         _coroutineIsRunning = false;
 
-        _evolutionStage = 2;//ПОМЕНЯТЬ НА НОЛЬ
+        _evolutionStage = 0;
         SwitchEvolutionStage();
     }
 
     
     public void PlayAnimation(bool playerIsMoving)
     {
+        if (_evolutionStage > 1 && _evolutionStage < 4) //если мы в коконе, то не играть другие анимации.
+            return;
+
         if (playerIsMoving)
         {
             if (_coroutineIsRunning)
@@ -84,32 +89,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         _isBlinking = Convert.ToBoolean(isBlinking);
     }
-
-    //СПРОСИТЬ, КАК ОНО В ПЛЭЕРКОНТРОЛЛЕРЕ РАБОТАЕТ
-    public void SwitchEvolutionStage(PlayerCondition evolutionStage)
-    {
-        switch (evolutionStage)
-        {
-            case PlayerCondition.caterpillar:
-                {
-
-                    break;
-                }
-                
-            case PlayerCondition.butterfly:
-                {
-
-                    break;
-                }
-            case PlayerCondition.uncontrollable:
-                {
-                    //
-                    break;
-                }
-            default:
-                break;
-        }
-    }
+    
 
     public void SwitchEvolutionStage()
     {
@@ -122,12 +102,23 @@ public class PlayerAnimationController : MonoBehaviour {
                     _moveStateName = "Caterpillar Move";
                     break;
                 }
-            case 2://играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
+            case 2:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
                 {
+                    _animator.Play("CaterpillarToCocoon");
+
+                    _screenLighting.ChangeStateToTransforming();
 
                     break;
                 }
-            case 3:
+            case 3:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
+                {
+                    _animator.Play("CocoonToButterfly");
+
+                    _screenLighting.ChangeStateToDependingOnDistanceToLight();
+
+                    break;
+                }
+            case 4:
                 {
                     _idleStateName = "Moth Idle";
                     _blinkStateName = "Moth Blink";
