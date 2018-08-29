@@ -10,10 +10,6 @@ public class PlayerAnimationController : MonoBehaviour {
     private float _minBlinkDelay;
     [SerializeField]
     private float _maxBlinkDelay;
-    [SerializeField]
-    private float _blinkAnimationSpeed;
-    [SerializeField]
-    private float _mothMoveAnimationSpeed;
     
     private bool _doBlink;
 
@@ -34,13 +30,16 @@ public class PlayerAnimationController : MonoBehaviour {
         _canStopMoving = true;
         _coroutineIsRunning = false;
 
-        _evolutionStage = 2;//ПОМЕНЯТЬ НА НОЛЬ
+        _evolutionStage = 0;
         SwitchEvolutionStage();
     }
 
     
     public void PlayAnimation(bool playerIsMoving)
     {
+        if (_evolutionStage == 2) //если мы в коконе, то не играть другие анимации.
+            return;
+
         if (playerIsMoving)
         {
             if (_coroutineIsRunning)
@@ -84,32 +83,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         _isBlinking = Convert.ToBoolean(isBlinking);
     }
-
-    //СПРОСИТЬ, КАК ОНО В ПЛЭЕРКОНТРОЛЛЕРЕ РАБОТАЕТ
-    public void SwitchEvolutionStage(PlayerCondition evolutionStage)
-    {
-        switch (evolutionStage)
-        {
-            case PlayerCondition.caterpillar:
-                {
-
-                    break;
-                }
-                
-            case PlayerCondition.butterfly:
-                {
-
-                    break;
-                }
-            case PlayerCondition.uncontrollable:
-                {
-                    //
-                    break;
-                }
-            default:
-                break;
-        }
-    }
+    
 
     public void SwitchEvolutionStage()
     {
@@ -124,7 +98,7 @@ public class PlayerAnimationController : MonoBehaviour {
                 }
             case 2:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
                 {
-
+                    _animator.Play("Cocoon");
                     break;
                 }
             case 3:

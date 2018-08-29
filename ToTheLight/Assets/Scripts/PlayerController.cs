@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool _canClimb = false;
 
     private PlayerAnimationController _animation;
-
-
+    private bool _isMoving;
+    
     
     private void Start()
     {
@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        _isMoving = false;
+
         if (_leafCount == 3)
         {
             StartCoroutine(Transformation());
@@ -56,16 +58,24 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-        
+
+        if (_animation != null)
+        {
+            _animation.PlayAnimation(_isMoving);
+        }
+        else
+        {
+            throw new Exception("Отсутствует аниматор на обьекте " + name);
+        }
+
+
     }
     void ButterflyMove()
-    {
-        bool isMoving = false;
-
+    {     
         var horizontal = Input.GetAxisRaw("Horizontal");
 
         if (horizontal != 0)
-            isMoving = true;
+            _isMoving = true;
 
         var jump = Input.GetButtonDown("Jump");
         if (jump)
@@ -73,19 +83,10 @@ public class PlayerController : MonoBehaviour
             _playerRb.velocity = Vector2.zero;
             _playerRb.AddForce(Vector2.up * jumpforce);
 
-            isMoving = true;
+            _isMoving = true;
         }
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * moveSpeed);
 
-        if (_animation!=null)
-        {
-            _animation.PlayAnimation(isMoving);
-        }
-        else
-        {
-            throw new Exception("Отсутствует аниматор на обьекте "+ name);
-        }
-        
     }
     void CaterpillarMove()
     {
@@ -96,6 +97,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector2.up * vertical * Time.deltaTime * moveSpeed);
         }
+
+        if (horizontal != 0 || (vertical !=0 && _canClimb))
+            _isMoving = true;
     }
 
     void SetRbValues()
@@ -108,13 +112,20 @@ public class PlayerController : MonoBehaviour
         
         if(!_isTransformating)
         {
-            Debug.Log("Трансофрмация начата");
+            Debug.Log("Трансофрмация начата");      
             _isTransformating = true;
             _leafCount = 0;
             playerCondition = PlayerCondition.uncontrollable;
-            /// Animation
+
+            // Animation
+            _animation.SwitchEvolutionStage();
+
             yield return new WaitForSeconds(transformationTime);
-            playerCondition = PlayerCondition.butterfly;            
+            playerCondition = PlayerCondition.butterfly;
+
+            // Animation
+            _animation.SwitchEvolutionStage();
+
             Debug.Log("Трансофрмация завершена");
         }
         
