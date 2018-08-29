@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public PlayerCondition playerCondition;
     public bool setRBValuesByEditor = false;
     public float transformationTime = 5;
+    public float transformationExitTime = 2;
 
     private const float rbMass = 0.5f;
     private const float rbGravityScale = 0.5f;
@@ -23,8 +24,11 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAnimationController _animation;
     private bool _isMoving;
-    
-    
+
+    private Vector3 _localScaleFacingRight = new Vector3(1, 1, 1);
+    private Vector3 _localScaleFacingLeft = new Vector3(-1, 1, 1);
+
+
     private void Start()
     {
         _playerRb = GetComponent<Rigidbody2D>();
@@ -100,6 +104,12 @@ public class PlayerController : MonoBehaviour
 
         if (horizontal != 0 || (vertical !=0 && _canClimb))
             _isMoving = true;
+
+        //разворот по горизонтали в зависимости от направления движения
+        if (horizontal < 0)
+            transform.localScale = _localScaleFacingLeft;
+        else if (horizontal > 0)
+            transform.localScale = _localScaleFacingRight;
     }
 
     void SetRbValues()
@@ -121,6 +131,11 @@ public class PlayerController : MonoBehaviour
             _animation.SwitchEvolutionStage();
 
             yield return new WaitForSeconds(transformationTime);
+
+            // Animation
+            _animation.SwitchEvolutionStage();
+
+            yield return new WaitForSeconds(transformationExitTime);
             playerCondition = PlayerCondition.butterfly;
 
             // Animation

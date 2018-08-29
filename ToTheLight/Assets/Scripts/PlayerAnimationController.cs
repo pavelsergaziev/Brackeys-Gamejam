@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAnimationController : MonoBehaviour {
 
     private Animator _animator;
+
+    private ScreenLighting _screenLighting;
 
     [SerializeField]
     private float _minBlinkDelay;
@@ -27,6 +30,9 @@ public class PlayerAnimationController : MonoBehaviour {
     private void Start()
     {
         _animator = GetComponent<Animator>();
+
+        _screenLighting = FindObjectOfType<ScreenLighting>();
+
         _canStopMoving = true;
         _coroutineIsRunning = false;
 
@@ -37,7 +43,7 @@ public class PlayerAnimationController : MonoBehaviour {
     
     public void PlayAnimation(bool playerIsMoving)
     {
-        if (_evolutionStage == 2) //если мы в коконе, то не играть другие анимации.
+        if (_evolutionStage > 1 && _evolutionStage < 4) //если мы в коконе, то не играть другие анимации.
             return;
 
         if (playerIsMoving)
@@ -98,10 +104,21 @@ public class PlayerAnimationController : MonoBehaviour {
                 }
             case 2:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
                 {
-                    _animator.Play("Cocoon");
+                    _animator.Play("CaterpillarToCocoon");
+
+                    _screenLighting.ChangeStateToTransforming();
+
                     break;
                 }
-            case 3:
+            case 3:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
+                {
+                    _animator.Play("CocoonToButterfly");
+
+                    _screenLighting.ChangeStateToDependingOnDistanceToLight();
+
+                    break;
+                }
+            case 4:
                 {
                     _idleStateName = "Moth Idle";
                     _blinkStateName = "Moth Blink";
