@@ -897,3 +897,68 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fb544f8b2e1a1a4abe3e5b1ea39514b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2067377197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2067377199}
+  - component: {fileID: 2067377198}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2067377198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2067377197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670cae520ea18794dbe6fa0070337685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: 24ad61ed1c18c8640895456860b4c265, type: 3}
+    name: CatarpillarTheme
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: cad83026e6d272f4d96509f75ebe9cd6, type: 3}
+    name: TransformationTheme
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 955c0993d33e0f243949810107f45c9a, type: 3}
+    name: ButterflyMusTheme_1
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+--- !u!4 &2067377199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2067377197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9778277, y: -6.4292564, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
