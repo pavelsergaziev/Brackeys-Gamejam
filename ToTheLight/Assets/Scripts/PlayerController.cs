@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     public bool setRBValuesByEditor = false;
 
     public float transformationTime = 8;
-
-    public float transformationTime = 8;
     public float transformationExitTime = 2;
 
 
