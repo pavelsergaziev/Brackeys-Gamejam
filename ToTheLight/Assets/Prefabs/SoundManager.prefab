@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: 24ad61ed1c18c8640895456860b4c265, type: 3}
+  - clip: {fileID: 8300000, guid: 5ad41308a6a0b9a42a84c82b0e07eb51, type: 3}
     name: CatarpillarTheme
     volume: 1
     pitch: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     playOnAwake: 0
     audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: cad83026e6d272f4d96509f75ebe9cd6, type: 3}
+  - clip: {fileID: 8300000, guid: a2c4c42701f55a14bbec1375befa8c50, type: 3}
     name: TransformationTheme
     volume: 1
     pitch: 1
@@ -68,11 +68,67 @@ MonoBehaviour:
     playOnAwake: 0
     audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 955c0993d33e0f243949810107f45c9a, type: 3}
+  - clip: {fileID: 8300000, guid: ca0ba0f71bed9174ea40237e07e4feb1, type: 3}
     name: ButterflyMusTheme_1
     volume: 1
     pitch: 1
     loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8efb3c027916ffc49a82f913fcb52d5c, type: 3}
+    name: ButterflyMusTheme_2
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fab8c4d3ff6e18b4e93afa40247d198c, type: 3}
+    name: ForestAmbience
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: aabc9c01f881a9945a0fbf3f5a5c0ac3, type: 3}
+    name: LeafEat
+    volume: 0.97
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f4818cc1aea80ee4ba49b109518b677e, type: 3}
+    name: TransformationEnd
+    volume: 0.97
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4e86a2c7d4fd51e4fa4144ec1e06432f, type: 3}
+    name: TransformationStart
+    volume: 0.297
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: bff6a37016ad6d7419ddb64984f8d940, type: 3}
+    name: BeeFly
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a634fc5b5481fe64185b4901dfc9d8bc, type: 3}
+    name: SpyderAttack
+    volume: 0.228
+    pitch: 1
+    loop: 0
     playOnAwake: 0
     audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
     source: {fileID: 0}
