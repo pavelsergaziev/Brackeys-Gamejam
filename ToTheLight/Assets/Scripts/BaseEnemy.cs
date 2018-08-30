@@ -11,9 +11,12 @@ public abstract class BaseEnemy : MonoBehaviour {
     public float agroRadius;
 
     protected Transform _player;
+    protected SoundManager _soundManager;
+
     protected virtual void Start()
     {
         _player = FindObjectOfType<PlayerController>().transform;
+        _soundManager = FindObjectOfType<SoundManager>();
     }
     
     

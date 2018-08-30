@@ -25,8 +25,24 @@ public class SoundManager : MonoBehaviour {
     private void Start()
     {
         PlaySound("CatarpillarTheme");
+        PlaySound("ForestAmbience");
     }
 
+    public void PlaySound(string soundName,bool playOnce)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        if (!playOnce)
+        {
+            s.source.Play();
+        }
+        else
+        {
+            if (!s.source.isPlaying)
+            {
+                s.source.Play();  
+            }
+        }
+    }
     public void PlaySound(string soundName)
     {
 
@@ -56,56 +72,86 @@ public class SoundManager : MonoBehaviour {
         return s.source.isPlaying;
         
     }
-    IEnumerator FadeIn(Sound sound, float fadeTime)
+    public IEnumerator FadeIn(string soundName, float fadeTime)
     {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
         float t = 0f;
-        sound.source.volume = 0f;
-        while (t<fadeTime)
+        s.source.volume = 0f;
+        while (t<=fadeTime)
         {
-            sound.source.volume = Mathf.Lerp(0f, 1f, t / fadeTime);
+            s.source.volume = Mathf.Lerp(0f, 1f, t / fadeTime);
             t += Time.deltaTime;
             yield return null;
         }
-        sound.source.volume = 1f;
+        s.source.volume = 1f;
         
     }
-    IEnumerator FadeOut(Sound sound, float fadeTime, bool stopAfterFade)
+    public IEnumerator FadeOut(string soundName, float fadeTime, bool stopAfterFade)
     {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
         float t = 0f;
-        float x = sound.source.volume;
-        while (t<fadeTime)
+        float x = s.source.volume;
+        while (t<=fadeTime)
         {
-            sound.source.volume = Mathf.Lerp(x, 0f, t / fadeTime);
+            s.source.volume = Mathf.Lerp(x, 0f, t / fadeTime);
             t += Time.deltaTime;
             yield return null;
         }
-        sound.source.volume = 0f;
+        s.source.volume = 0f;
         if (stopAfterFade)
         {
-            StopPlaySound(sound.name);
+            StopPlaySound(s.name);
         }
     }
-    public void CrossFade(Sound sound1, Sound sound2, float fadeInTime, float foadeOutTime, bool stopSecondTrack)
+    public void CrossFade(string fadeInTrackName, string fadeOutTrackName, float fadeInTime, float foadeOutTime, bool stopSecondTrack)
     {
-        StartCoroutine(FadeIn(sound1, fadeInTime));
-        sound1.source.Play();
-        StartCoroutine(FadeOut(sound2, fadeInTime, stopSecondTrack));
+        StartCoroutine(FadeIn(fadeInTrackName, fadeInTime));
+        PlaySound(fadeInTrackName);
+        
+        StartCoroutine(FadeOut(fadeOutTrackName, fadeInTime, stopSecondTrack));
         
     }
-    IEnumerator PlayAfter(Sound sound1,Sound sound2)
+    public IEnumerator PlayAfter(string playingTrackName, string nextTrackName, float timeBeforeEndOfPlayingTrack, float fadeInTime, float fadeOutTime)
     {
-        
-        yield return new WaitForSeconds(sound1.clip.length-0.01f);
-        CrossFade(sound2, sound1, 0.1f, 0.5f, true);
+        Sound playingTrack = Array.Find(sounds, sound => sound.name == playingTrackName);
+        float time = playingTrack.clip.length - playingTrack.source.time - timeBeforeEndOfPlayingTrack;
+        if (time<0)
+        {
+            time = 0;
+        }
+        yield return new WaitForSeconds(time);
+        CrossFade(nextTrackName, playingTrackName, fadeInTime, fadeOutTime, true);
     }
     public void Transformation()
     {
-        CrossFade(Array.Find(sounds, sound => sound.name == "TransformationTheme"),
-                      Array.Find(sounds, sound => sound.name == "CatarpillarTheme"),
-                      5f, 5f, false);
-        StartCoroutine(PlayAfter(Array.Find(sounds, sound => sound.name == "TransformationTheme"),
-                  Array.Find(sounds, sound => sound.name == "ButterflyMusTheme_1")));
+        PlaySound("TransformationStart");
+        CrossFade("TransformationTheme","CatarpillarTheme",3f, 3f, true);
+        StartCoroutine(PlayAfter("TransformationTheme","ButterflyMusTheme_1", 6.857f, 0.1f, 6f));
     }
+    public void PlaySecondPartOfmainTheme()
+    {
+        Debug.Log("x");
+        StartCoroutine(PlayAfter("ButterflyMusTheme_1", "ButterflyMusTheme_2", 0.1f, 0.1f,0.1f));
+        
+    }
+    public void SoundPitch(string soundName, float pitch)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        if (pitch >3)
+        {
+            pitch = 3;
+        }
+        if (pitch <-3)
+        {
+            pitch = -3;
+        }
+        s.source.pitch = pitch;
+    }
+    public Sound GetSound(string soundname)
+    {
+        return Array.Find(sounds, sound => sound.name == soundname);
+    }
+
 
 
 }

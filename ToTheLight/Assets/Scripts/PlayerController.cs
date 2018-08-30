@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public PlayerCondition playerCondition;
     public bool setRBValuesByEditor = false;
 
-    public float transformationTime = 8;
+    public float transformationTime = 7;
     public float transformationExitTime = 2;
 
 
@@ -137,17 +137,18 @@ public class PlayerController : MonoBehaviour
 
             // Animation
             _animation.SwitchEvolutionStage();
-
+            
             yield return new WaitForSeconds(transformationTime);
 
             // Animation
             _animation.SwitchEvolutionStage();
-
+            _soundManager.PlaySound("TransformationEnd");
             yield return new WaitForSeconds(transformationExitTime);
             playerCondition = PlayerCondition.butterfly;
 
             // Animation
             _animation.SwitchEvolutionStage();
+            
 
             Debug.Log("Трансофрмация завершена");
         }
@@ -157,6 +158,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Leaf")
         {
+
+            _soundManager.SoundPitch("LeafEat", UnityEngine.Random.Range(0.8f, 1.2f));
+            _soundManager.PlaySound("LeafEat");
             _leafCount++;
             Destroy(collision.gameObject);
         }
@@ -169,7 +173,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D (Collider2D collision)
     {
 
-        if (collision.tag == "Climb"&&playerCondition == PlayerCondition.caterpillar)
+        if (collision.tag == "Climb" && playerCondition == PlayerCondition.caterpillar)
         {
             _playerRb.isKinematic = false;
             _canClimb = false;

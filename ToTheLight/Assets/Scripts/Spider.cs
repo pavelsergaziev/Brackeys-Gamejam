@@ -11,7 +11,7 @@ public class Spider : BaseEnemy
     private TrailRenderer _web;
     private bool _isDead = false;
     public Trigger trigger;
-
+    
     protected override void Start()
     {
         base.Start();
@@ -69,6 +69,7 @@ public class Spider : BaseEnemy
     }
     void Drop()
     {
+        _soundManager.PlaySound("SpyderAttack",true);
         _web.enabled = true;
         transform.position += Vector3.down * Time.deltaTime * dropSpeed;
         Dead();
@@ -78,7 +79,7 @@ public class Spider : BaseEnemy
     {
         if (!_isDead)
         {
-            Destroy(gameObject, 5);
+            Destroy(gameObject, 3);
             _isDead = true;
         }
     }
