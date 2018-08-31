@@ -8,7 +8,7 @@ public class EventManager : MonoBehaviour {
 
     private void Start()
     {
-        _soundManager = FindObjectOfType<SoundManager>();
+        _soundManager = SoundManager.instance;
         if (_soundManager ==null)
         {
             throw new System.Exception("EventManager не может найти ссылку на SoundManager");

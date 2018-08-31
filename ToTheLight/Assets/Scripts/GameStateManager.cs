@@ -61,7 +61,7 @@ public class GameStateManager : MonoBehaviour {
         _screenLighting = FindObjectOfType<ScreenLighting>();
         _camera = FindObjectOfType <CameraController>();
         _screenFilterImage = _screenLighting.transform.GetComponent<Image>();
-        _soundManager = FindObjectOfType<SoundManager>();
+        _soundManager = SoundManager.instance;
 
         _inGameOverMenu = false;
     }
@@ -137,12 +137,14 @@ public class GameStateManager : MonoBehaviour {
     public void RestartGame()
     {
         Time.timeScale = 1;
+        _soundManager.StartGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1;
+        _soundManager.StartGame();
         SceneManager.LoadScene("TitleScreen");
     }
 

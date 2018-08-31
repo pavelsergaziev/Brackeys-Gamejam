@@ -2511,7 +2511,7 @@ Prefab:
     - target: {fileID: 114025018870360038, guid: f3c8af57487d7e04b96062abcdbe5b81,
         type: 2}
       propertyPath: playerCondition
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3c8af57487d7e04b96062abcdbe5b81, type: 2}
@@ -2781,11 +2781,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.size
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 4788472784304786, guid: eb41816be282aee459ccfaa477a69997, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.9778277
@@ -2818,120 +2813,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 75ceb8b9443913747b35afcb72fb87f4, type: 3}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[11].name
-      value: HidenMonsterAwake
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[11].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[11].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[11].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[11].audioMixer
-      value: 
-      objectReference: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd,
-        type: 2}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[12].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b07486ed97fd37447b6a518528d2083d, type: 3}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[12].name
-      value: HidenMonsterAgro
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[12].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[12].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[12].audioMixer
-      value: 
-      objectReference: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd,
-        type: 2}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[13].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5edcd9e1b01159e4ca6680c48ba031d8, type: 3}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[13].name
-      value: HidenMonsterHide
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[13].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[13].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[13].audioMixer
-      value: 
-      objectReference: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd,
-        type: 2}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[12].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[14].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: aed6abc1dc60165448de8f66fa9e08ea, type: 3}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[14].name
-      value: Burn
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[14].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[14].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114012557397413782, guid: eb41816be282aee459ccfaa477a69997,
-        type: 2}
-      propertyPath: sounds.Array.data[14].audioMixer
-      value: 
-      objectReference: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb41816be282aee459ccfaa477a69997, type: 2}
   m_IsPrefabAsset: 0
@@ -9429,6 +9310,7 @@ Transform:
   m_Children:
   - {fileID: 1973953261}
   - {fileID: 1391349531}
+  - {fileID: 1628983538}
   m_Father: {fileID: 1977807694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10077,6 +9959,60 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba78d00126aa06047962c7258f733900, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1628983537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628983538}
+  - component: {fileID: 1628983539}
+  m_Layer: 0
+  m_Name: Climbable collider trigger (1)
+  m_TagString: Climb
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1628983538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1628983537}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 2.98, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1383136309}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!61 &1628983539
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1628983537}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.91, y: 6}
+  m_EdgeRadius: 0
 --- !u!1 &1630880813
 GameObject:
   m_ObjectHideFlags: 0
