@@ -14,12 +14,14 @@ public class BadFly : BaseEnemy
 
     private const  int  _patrolPointsCount = 10;
     private Sound _beeFlySound;
+
     protected override void Start()
     {
         base.Start();
-        
+
         _soundManager.PlaySound("BeeFly");
         _beeFlySound = _soundManager.GetSound("BeeFly");
+
         _patrolPoints = new List<Vector3>();
         for (int i = 0; i < _patrolPointsCount; i++)
         {
@@ -61,13 +63,13 @@ public class BadFly : BaseEnemy
     {
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * followSpeed);
     }
-
+    
     void SoundControl()
     {
         if (Vector3.Distance(transform.position, _player.transform.position) < soundRange)
         {
-            
-            if (_beeFlySound.source.volume!=1)
+
+            if (_beeFlySound.source.volume != 1)
             {
                 _beeFlySound.source.volume = Mathf.Lerp(_beeFlySound.source.volume, _beeFlySound.volume, .05f);
             }
@@ -81,6 +83,4 @@ public class BadFly : BaseEnemy
             }
         }
     }
-
-
 }

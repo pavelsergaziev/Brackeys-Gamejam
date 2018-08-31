@@ -27,6 +27,14 @@ public class PlayerAnimationController : MonoBehaviour {
     private string _blinkStateName;
     private string _moveStateName;
 
+    [SerializeField]
+    private GameObject _colliderToTurnOnAfterTransformation;
+    [SerializeField]
+    private GameObject _colliderToTurnOffAfterTransformation;
+
+    [SerializeField]
+    private Vector2 _mothColliderOffset, _mothColliderSize;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -36,8 +44,7 @@ public class PlayerAnimationController : MonoBehaviour {
         _canStopMoving = true;
         _coroutineIsRunning = false;
 
-        _evolutionStage = 0;
-        SwitchEvolutionStage();
+        ResetEvolution();
     }
 
     
@@ -108,11 +115,18 @@ public class PlayerAnimationController : MonoBehaviour {
 
                     _screenLighting.ChangeStateToTransforming();
 
+                    _colliderToTurnOffAfterTransformation.SetActive(false);
+                    _colliderToTurnOnAfterTransformation.SetActive(true);
+
                     break;
                 }
             case 3:// играем анимацию, дальше либо в конце её на триггер вешаем вызов SwitchEvolutionStage(), либо запускаем таймер, либо ждём инпута от плэерконтроллера или менеджера скриптов
                 {
                     _animator.Play("CocoonToButterfly");
+
+                    var collider = transform.GetComponent<BoxCollider2D>();
+                    collider.size = _mothColliderSize;
+                    collider.offset = _mothColliderOffset;
 
                     _screenLighting.ChangeStateToDependingOnDistanceToLight();
 
@@ -128,6 +142,12 @@ public class PlayerAnimationController : MonoBehaviour {
             default:
                 break;
         }        
+    }
+
+    public void ResetEvolution()
+    {
+        _evolutionStage = 0;
+        SwitchEvolutionStage();
     }
 
 }
