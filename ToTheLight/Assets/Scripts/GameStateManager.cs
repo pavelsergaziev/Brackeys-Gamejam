@@ -136,15 +136,17 @@ public class GameStateManager : MonoBehaviour {
 
     public void RestartGame()
     {
-        Time.timeScale = 1;
         _soundManager.StartGame();
+        Time.timeScale = 1;
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()
     {
-        Time.timeScale = 1;
         _soundManager.StartGame();
+        Time.timeScale = 1;
+        
         SceneManager.LoadScene("TitleScreen");
     }
 

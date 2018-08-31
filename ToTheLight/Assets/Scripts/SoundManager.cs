@@ -62,6 +62,7 @@ public class SoundManager : MonoBehaviour {
         s.source.Play();
 
     }
+    
     public void StopPlaySound(string soundName)
     {
 
@@ -96,6 +97,25 @@ public class SoundManager : MonoBehaviour {
         }
         s.source.volume = 1f;
         
+    }
+    public IEnumerator FadeIn(string soundName, float fadeTime, bool playTrack)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        
+        float t = 0f;
+        s.source.volume = 0f;
+        if (playTrack)
+        {
+            s.source.Play();
+        }
+        while (t <= fadeTime)
+        {
+            s.source.volume = Mathf.Lerp(0f, 1f, t / fadeTime);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        s.source.volume = 1f;
+
     }
     public IEnumerator FadeOut(string soundName, float fadeTime, bool stopAfterFade)
     {
@@ -167,10 +187,7 @@ public class SoundManager : MonoBehaviour {
         foreach (var item in sounds)
         {
 
-            if (item.name == "CatarpillarTheme" ||
-                item.name == "ButterflyMusTheme_1" ||
-                item.name == "ButterflyMusTheme_2" ||
-                item.name == "DeadMenu")
+            if (item.name != "ForestAmbience")
             {
                 item.source.Stop();
             }
@@ -180,19 +197,19 @@ public class SoundManager : MonoBehaviour {
     }
     public void StartGame()
     {
+        StopAllCoroutines();
         foreach (var item in sounds)
         {
 
-            if (item.name == "CatarpillarTheme" ||
-                item.name == "ButterflyMusTheme_1" ||
-                item.name == "ButterflyMusTheme_2" ||
-                item.name == "DeadMenu") 
+            if (item.name != "ForestAmbience") 
             {
                 item.source.Stop();
             }
+            
         }
-        PlaySound("CatarpillarTheme");
+        StartCoroutine( FadeIn("CatarpillarTheme", .01f, true));
         PlaySound("ForestAmbience");
+
     }
     public void FinishGame()
     {
