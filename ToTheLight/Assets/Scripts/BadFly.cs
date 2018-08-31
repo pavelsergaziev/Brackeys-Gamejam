@@ -61,6 +61,7 @@ public class BadFly : BaseEnemy
     {
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * followSpeed);
     }
+<<<<<<< HEAD
     void OnTriggerEnter2D(Collider2D other)
     {
         var playerScript = other.GetComponent<PlayerController>();
@@ -88,5 +89,7 @@ public class BadFly : BaseEnemy
             }
         }
     }
+=======
+>>>>>>> lamp-&-spikes
 
 }

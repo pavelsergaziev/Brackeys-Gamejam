@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212785059082488742}
   - component: {fileID: 61693881651758476}
   - component: {fileID: 114403409177806828}
+  - component: {fileID: 95207592758915680}
   m_Layer: 0
   m_Name: BdFly
   m_TagString: Untagged
@@ -65,8 +66,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.6, y: 0.5}
   m_EdgeRadius: 0
+--- !u!95 &95207592758915680
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495967814566796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 508741d1d8b45084dae9647107c9869b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114403409177806828
 MonoBehaviour:
   m_ObjectHideFlags: 1

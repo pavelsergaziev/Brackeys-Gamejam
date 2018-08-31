@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212273069902763180}
   - component: {fileID: 95800963971363172}
   - component: {fileID: 58878743217155742}
-  - component: {fileID: 114717381638189876}
+  - component: {fileID: 114556107135197392}
   m_Layer: 0
   m_Name: BushMonster
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1237994584722598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.96, y: -2.55, z: 0}
+  m_LocalPosition: {x: -5.5, y: 25.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,12 +52,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.01, y: 0.01999998}
   serializedVersion: 2
-  m_Radius: 0.5031698
+  m_Radius: 0.46
 --- !u!95 &95800963971363172
 Animator:
   serializedVersion: 3
@@ -76,21 +76,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114717381638189876
+--- !u!114 &114556107135197392
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1237994584722598}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b1fe5e4b77fe94a9cf1ffc5e4a6507, type: 3}
+  m_Script: {fileID: 11500000, guid: 941c00bf7362c8145af0f369f5db6422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 5
-  agroRadius: 2.5
-  patrolSphereRadious: 1
-  followSpeed: 2
+  patrolSpeed: 0
+  agroRadius: 3.8
+  _followSpeed: 1.66
+  _distanceToPlayerToEmerge: 1.8
+  _timeBeforeHidingAgain: 4
 --- !u!212 &212273069902763180
 SpriteRenderer:
   m_ObjectHideFlags: 1
