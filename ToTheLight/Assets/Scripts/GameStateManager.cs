@@ -21,7 +21,9 @@ public class GameStateManager : MonoBehaviour {
     [SerializeField]
     private GameObject _btnRestart;
     [SerializeField]
-    private GameObject _btnQuit;
+    private GameObject _btnExitToTitle;
+    [SerializeField]
+    private GameObject _btnQuitGame;
     [SerializeField]
     private Text _txtGameOverText;
 
@@ -74,9 +76,7 @@ public class GameStateManager : MonoBehaviour {
             _screenFilterImage.color = _savedUnpausedColor;
             _playerController.playerCondition = _savedUnpausedPlayerCondition;
 
-            _btnResume.SetActive(false);
-            _btnRestart.SetActive(false);
-            _btnQuit.SetActive(false);
+            SwitchButtonsOnOff();
 
             Time.timeScale = 1;
         }
@@ -88,14 +88,20 @@ public class GameStateManager : MonoBehaviour {
             _savedUnpausedPlayerCondition = _playerController.playerCondition;
             _playerController.playerCondition = PlayerCondition.uncontrollable;
 
-            _btnResume.SetActive(true);
-            _btnRestart.SetActive(true);
-            _btnQuit.SetActive(true);
+            SwitchButtonsOnOff();
 
             Time.timeScale = 0;
         }
 
         _inPausedState = !_inPausedState;
+    }
+
+    private void SwitchButtonsOnOff()
+    {
+        _btnResume.SetActive(!_btnResume.activeSelf);
+        _btnRestart.SetActive(!_btnRestart.activeSelf);
+        _btnExitToTitle.SetActive(!_btnExitToTitle.activeSelf);
+        _btnQuitGame.SetActive(!_btnQuitGame.activeSelf);
     }
 
 
@@ -129,6 +135,12 @@ public class GameStateManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("TitleScreen");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
@@ -157,6 +169,7 @@ public class GameStateManager : MonoBehaviour {
     {
         _txtGameOverText.gameObject.SetActive(true);
         _btnRestart.SetActive(true);
-        _btnQuit.SetActive(true);
+        _btnExitToTitle.SetActive(true);
+        _btnQuitGame.SetActive(true);
     }
 }
