@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _localScaleFacingRight = new Vector3(1, 1, 1);
     private Vector3 _localScaleFacingLeft = new Vector3(-1, 1, 1);
 
+    public GameObject _youCanFlyNotificationTrigger;
 
     private void Start()
     {
@@ -142,6 +143,8 @@ public class PlayerController : MonoBehaviour
             _soundManager.PlaySound("TransformationEnd");
             yield return new WaitForSeconds(transformationExitTime);
             playerCondition = PlayerCondition.butterfly;
+
+            _youCanFlyNotificationTrigger.SetActive(true);
 
             // Animation
             _animation.SwitchEvolutionStage();
