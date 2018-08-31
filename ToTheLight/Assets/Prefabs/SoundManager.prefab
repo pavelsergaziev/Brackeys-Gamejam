@@ -140,3 +140,35 @@ MonoBehaviour:
     playOnAwake: 0
     audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 75ceb8b9443913747b35afcb72fb87f4, type: 3}
+    name: HidenMonsterAwake
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b07486ed97fd37447b6a518528d2083d, type: 3}
+    name: HidenMonsterAgro
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5edcd9e1b01159e4ca6680c48ba031d8, type: 3}
+    name: HidenMonsterHide
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: aed6abc1dc60165448de8f66fa9e08ea, type: 3}
+    name: Burn
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioMixer: {fileID: 24300002, guid: b3f2e327922676a4d9323e243bff67cd, type: 2}
+    source: {fileID: 0}

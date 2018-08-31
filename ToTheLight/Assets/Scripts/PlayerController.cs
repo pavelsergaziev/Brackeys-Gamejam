@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _soundManager = FindObjectOfType<SoundManager>();
+        _soundManager = SoundManager.instance;
         _playerRb = GetComponent<Rigidbody2D>();
         _animation = GetComponent<PlayerAnimationController>();
 

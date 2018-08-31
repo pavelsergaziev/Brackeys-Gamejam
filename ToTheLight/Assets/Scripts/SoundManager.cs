@@ -5,10 +5,20 @@ using UnityEngine.Audio;
 using System;
 
 public class SoundManager : MonoBehaviour {
-
+    public static SoundManager instance;
     public Sound[] sounds;
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -24,6 +34,8 @@ public class SoundManager : MonoBehaviour {
     
     private void Start()
     {
+        
+        
         StartGame();
     }
 
@@ -154,8 +166,11 @@ public class SoundManager : MonoBehaviour {
     {
         foreach (var item in sounds)
         {
-            
-            if (item.name == "CatarpillarTheme"||item.name == "ButterflyMusTheme_1"|| item.name == "ButterflyMusTheme_2")
+
+            if (item.name == "CatarpillarTheme" ||
+                item.name == "ButterflyMusTheme_1" ||
+                item.name == "ButterflyMusTheme_2" ||
+                item.name == "DeadMenu")
             {
                 item.source.Stop();
             }
@@ -165,6 +180,17 @@ public class SoundManager : MonoBehaviour {
     }
     public void StartGame()
     {
+        foreach (var item in sounds)
+        {
+
+            if (item.name == "CatarpillarTheme" ||
+                item.name == "ButterflyMusTheme_1" ||
+                item.name == "ButterflyMusTheme_2" ||
+                item.name == "DeadMenu") 
+            {
+                item.source.Stop();
+            }
+        }
         PlaySound("CatarpillarTheme");
         PlaySound("ForestAmbience");
     }
