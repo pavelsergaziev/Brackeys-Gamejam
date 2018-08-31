@@ -126,31 +126,25 @@ public class PlayerController : MonoBehaviour
         
         if(!_isTransformating)
         {
-
-            Debug.Log("Трансофрмация начата");
             _soundManager.Transformation();
-
-            
+                        
             _isTransformating = true;
             _leafCount = 0;
             playerCondition = PlayerCondition.uncontrollable;
 
             // Animation
             _animation.SwitchEvolutionStage();
-            
+
             yield return new WaitForSeconds(transformationTime);
 
             // Animation
             _animation.SwitchEvolutionStage();
-            _soundManager.PlaySound("TransformationEnd");
+
             yield return new WaitForSeconds(transformationExitTime);
             playerCondition = PlayerCondition.butterfly;
 
             // Animation
             _animation.SwitchEvolutionStage();
-            
-
-            Debug.Log("Трансофрмация завершена");
         }
         
     }
@@ -158,7 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Leaf")
         {
-
             _soundManager.SoundPitch("LeafEat", UnityEngine.Random.Range(0.8f, 1.2f));
             _soundManager.PlaySound("LeafEat");
             _leafCount++;
@@ -173,7 +166,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D (Collider2D collision)
     {
 
-        if (collision.tag == "Climb" && playerCondition == PlayerCondition.caterpillar)
+        if (collision.tag == "Climb"&&playerCondition == PlayerCondition.caterpillar)
         {
             _playerRb.isKinematic = false;
             _canClimb = false;

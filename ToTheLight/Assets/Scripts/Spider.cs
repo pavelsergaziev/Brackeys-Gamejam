@@ -11,7 +11,7 @@ public class Spider : BaseEnemy
     private TrailRenderer _web;
     private bool _isDead = false;
     public Trigger trigger;
-    
+
     protected override void Start()
     {
         base.Start();
@@ -69,7 +69,7 @@ public class Spider : BaseEnemy
     }
     void Drop()
     {
-        _soundManager.PlaySound("SpyderAttack",true);
+        _soundManager.PlaySound("SpyderAttack", true);
         _web.enabled = true;
         transform.position += Vector3.down * Time.deltaTime * dropSpeed;
         Dead();
@@ -91,13 +91,6 @@ public class Spider : BaseEnemy
         _web.startWidth = 0.019f;
         _web.enabled = false;
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        var playerScript = other.GetComponent<PlayerController>();
-        if (playerScript != null)
-        {
-            Debug.Log("нанесен урон");
-        }
-    }
+
     
 }
