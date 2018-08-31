@@ -24,8 +24,7 @@ public class SoundManager : MonoBehaviour {
     
     private void Start()
     {
-        PlaySound("CatarpillarTheme");
-        PlaySound("ForestAmbience");
+        StartGame();
     }
 
     public void PlaySound(string soundName,bool playOnce)
@@ -130,7 +129,7 @@ public class SoundManager : MonoBehaviour {
     }
     public void PlaySecondPartOfmainTheme()
     {
-        Debug.Log("x");
+       
         StartCoroutine(PlayAfter("ButterflyMusTheme_1", "ButterflyMusTheme_2", 0.1f, 0.1f,0.1f));
         
     }
@@ -150,6 +149,32 @@ public class SoundManager : MonoBehaviour {
     public Sound GetSound(string soundname)
     {
         return Array.Find(sounds, sound => sound.name == soundname);
+    }
+    public void GameOver()
+    {
+        foreach (var item in sounds)
+        {
+            
+            if (item.name == "CatarpillarTheme"||item.name == "ButterflyMusTheme_1"|| item.name == "ButterflyMusTheme_2")
+            {
+                item.source.Stop();
+            }
+        }
+        PlaySound("DeadMenu");
+        
+    }
+    public void StartGame()
+    {
+        PlaySound("CatarpillarTheme");
+        PlaySound("ForestAmbience");
+    }
+    public void FinishGame()
+    {
+        foreach (var item in sounds)
+        {
+            item.source.Stop();
+        }
+        PlaySound("Burn");
     }
 
 

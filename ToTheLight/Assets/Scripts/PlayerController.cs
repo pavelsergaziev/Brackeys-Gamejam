@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
             // Animation
             _animation.SwitchEvolutionStage();
-
+            _soundManager.PlaySound("TransformationEnd");
             yield return new WaitForSeconds(transformationExitTime);
             playerCondition = PlayerCondition.butterfly;
 
