@@ -61,7 +61,18 @@ public class BadFly : BaseEnemy
     {
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * followSpeed);
     }
+<<<<<<< HEAD
 
+=======
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        var playerScript = other.GetComponent<PlayerController>();
+        if (playerScript != null)
+        {
+            Debug.Log("нанесен урон");
+        }
+    }
+>>>>>>> parent of 85c3695... Merge branch 'lamp-&-spikes'
     void SoundControl()
     {
         if (Vector3.Distance(transform.position, _player.transform.position) < soundRange)
@@ -81,6 +92,9 @@ public class BadFly : BaseEnemy
             }
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 85c3695... Merge branch 'lamp-&-spikes'
 
 }

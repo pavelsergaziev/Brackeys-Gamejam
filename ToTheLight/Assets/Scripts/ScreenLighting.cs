@@ -17,11 +17,10 @@ public class ScreenLighting : MonoBehaviour
     private float _minAlpha;
     [SerializeField]
     private float _maxAlpha;
-    
+    [SerializeField]
+    private float _startingDistanceToLight;
     [SerializeField]
     private float _alphaCorrectionValue;
-
-    private float _startingDistanceToLight;
 
     private Color _nightColor;
     private float _transformationTime;
@@ -44,8 +43,7 @@ public class ScreenLighting : MonoBehaviour
     {
         while (true)
         {
-            
-            float targetAlpha = Vector3.Distance(_player.position, _mainLight.position) * _alphaCorrectionValue / _startingDistanceToLight;
+            float targetAlpha = (Vector3.Distance(_player.position, _mainLight.position) * _alphaCorrectionValue) / _startingDistanceToLight;
 
             if (targetAlpha > _maxAlpha)
                 targetAlpha = _maxAlpha;
@@ -65,25 +63,24 @@ public class ScreenLighting : MonoBehaviour
 
     public void ChangeStateToTransforming()
     {
-        _startingDistanceToLight = Vector3.Distance(_player.position, _mainLight.position);
         StartCoroutine("Transformation");
     }
 
     private IEnumerator Transformation()
     {
-        float startingTime = Time.time;
-        float currentTime = startingTime;
-        float targetTime = startingTime + _transformationTime;
+        float currentTime = Time.time;
+        float targetTime = currentTime + _transformationTime;
 
         while(currentTime <= targetTime)
         {
-            currentTime = Time.time;
-
-            _darkness.color = Color.Lerp(_darkness.color, _nightColor, (currentTime - startingTime) / _transformationTime);
-
+            var deltatime = Time.deltaTime;
+            currentTime += deltatime;
 
             yield return new WaitForEndOfFrame();
 
+            _darkness.color = Color.Lerp(_darkness.color, _nightColor, deltatime);            
         }
+
+        _darkness.color = _nightColor;
     }
 }

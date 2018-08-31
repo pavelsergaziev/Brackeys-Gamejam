@@ -91,6 +91,13 @@ public class Spider : BaseEnemy
         _web.startWidth = 0.019f;
         _web.enabled = false;
     }
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        var playerScript = other.GetComponent<PlayerController>();
+        if (playerScript != null)
+        {
+            Debug.Log("нанесен урон");
+        }
+    }
     
 }

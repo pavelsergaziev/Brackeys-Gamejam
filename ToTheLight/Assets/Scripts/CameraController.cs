@@ -8,14 +8,11 @@ public class CameraController : MonoBehaviour {
 
     private Transform _player;
 
-    private float _cameraPositionZ;
-
 
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>().transform;
-        _cameraPositionZ = transform.position.z;
-        transform.position = new Vector3(_player.position.x, _player.position.y, _cameraPositionZ) + offset; ;
+        transform.position = new Vector3(_player.position.x, _player.position.y, transform.position.z) + offset; ;
     }
     private void LateUpdate()
     {
@@ -23,7 +20,7 @@ public class CameraController : MonoBehaviour {
     }
     private void FollowPlayer()
     {
-        Vector3 desiredPos = new Vector3 (_player.position.x, _player.position.y, _cameraPositionZ) + offset;
+        Vector3 desiredPos = new Vector3 (_player.position.x, _player.position.y, transform.position.z) + offset;
         Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPos;
     }
