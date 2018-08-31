@@ -9003,7 +9003,7 @@ MonoBehaviour:
   _mainLight: {fileID: 38385717}
   _lightChangeDelay: 0.2
   _minAlpha: 0.05
-  _maxAlpha: 0.75
+  _maxAlpha: 0.72
   _alphaCorrectionValue: 1
 --- !u!114 &1306213360
 MonoBehaviour:
