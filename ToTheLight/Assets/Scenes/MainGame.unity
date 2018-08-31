@@ -1621,8 +1621,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 86642844}
   m_LocalRotation: {x: -0, y: -0, z: 0.65385896, w: 0.7566164}
-  m_LocalPosition: {x: -2.73, y: -21.17, z: 0}
-  m_LocalScale: {x: 2.2, y: 1.1, z: 1}
+  m_LocalPosition: {x: -3.09, y: -23.62, z: 0}
+  m_LocalScale: {x: 2.45, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 38385717}
   m_RootOrder: 5
@@ -9003,7 +9003,7 @@ MonoBehaviour:
   _mainLight: {fileID: 38385717}
   _lightChangeDelay: 0.2
   _minAlpha: 0.05
-  _maxAlpha: 0.75
+  _maxAlpha: 0.73
   _alphaCorrectionValue: 1
 --- !u!114 &1306213360
 MonoBehaviour:
