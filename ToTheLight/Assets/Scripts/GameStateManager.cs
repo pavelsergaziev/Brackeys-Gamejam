@@ -134,19 +134,20 @@ public class GameStateManager : MonoBehaviour {
         Application.Quit();
     }
 
-    //ПЕРЕПРОВЕРИТЬ!! Работает коряво
+
     private IEnumerator ChangeScreenColor(Color targetColor)
     {
         float startingTime = Time.time;
         float currentTime = startingTime;
         float targetTime = startingTime + _screenColorChangeTime;
+
+        Color startingColor = _screenFilterImage.color;
+
         while (currentTime <= targetTime)
         {
             currentTime = Time.time;
-
             yield return new WaitForEndOfFrame();
-            
-            _screenFilterImage.color = Color.Lerp(_screenFilterImage.color, targetColor, (currentTime - startingTime) / _screenColorChangeTime);
+            _screenFilterImage.color = Color.Lerp(startingColor, targetColor, (currentTime - startingTime) / _screenColorChangeTime);          
         }
 
         ActivateGameOverMenu();

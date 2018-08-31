@@ -75,11 +75,13 @@ public class ScreenLighting : MonoBehaviour
         float currentTime = startingTime;
         float targetTime = startingTime + _transformationTime;
 
-        while(currentTime <= targetTime)
+        Color startingColor = _darkness.color;
+
+        while (currentTime <= targetTime)
         {
             currentTime = Time.time;
 
-            _darkness.color = Color.Lerp(_darkness.color, _nightColor, (currentTime - startingTime) / _transformationTime);
+            _darkness.color = Color.Lerp(startingColor, _nightColor, (currentTime - startingTime) / _transformationTime);
 
 
             yield return new WaitForEndOfFrame();
