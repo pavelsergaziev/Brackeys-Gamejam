@@ -15,8 +15,15 @@ public abstract class BaseEnemy : MonoBehaviour {
     {
         _player = FindObjectOfType<PlayerController>().transform;
     }
-    
-    
 
-    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        var playerScript = other.GetComponent<PlayerController>();
+        if (playerScript != null)
+        {
+            FindObjectOfType<GameStateManager>().GameOverLoss();
+        }
+    }
+
+
 }

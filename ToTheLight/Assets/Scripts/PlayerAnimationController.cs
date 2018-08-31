@@ -44,8 +44,7 @@ public class PlayerAnimationController : MonoBehaviour {
         _canStopMoving = true;
         _coroutineIsRunning = false;
 
-        _evolutionStage = 0;
-        SwitchEvolutionStage();
+        ResetEvolution();
     }
 
     
@@ -143,6 +142,12 @@ public class PlayerAnimationController : MonoBehaviour {
             default:
                 break;
         }        
+    }
+
+    public void ResetEvolution()
+    {
+        _evolutionStage = 0;
+        SwitchEvolutionStage();
     }
 
 }

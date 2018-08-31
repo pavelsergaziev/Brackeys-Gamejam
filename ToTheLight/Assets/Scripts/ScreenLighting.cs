@@ -47,8 +47,6 @@ public class ScreenLighting : MonoBehaviour
             
             float targetAlpha = Vector3.Distance(_player.position, _mainLight.position) * _alphaCorrectionValue / _startingDistanceToLight;
 
-            Debug.Log(targetAlpha);
-
             if (targetAlpha > _maxAlpha)
                 targetAlpha = _maxAlpha;
             else if (targetAlpha < _minAlpha)
@@ -73,19 +71,19 @@ public class ScreenLighting : MonoBehaviour
 
     private IEnumerator Transformation()
     {
-        float currentTime = Time.time;
-        float targetTime = currentTime + _transformationTime;
+        float startingTime = Time.time;
+        float currentTime = startingTime;
+        float targetTime = startingTime + _transformationTime;
 
         while(currentTime <= targetTime)
         {
-            var deltatime = Time.deltaTime;
-            currentTime += deltatime;
+            currentTime = Time.time;
+
+            _darkness.color = Color.Lerp(_darkness.color, _nightColor, (currentTime - startingTime) / _transformationTime);
+
 
             yield return new WaitForEndOfFrame();
 
-            _darkness.color = Color.Lerp(_darkness.color, _nightColor, deltatime);            
         }
-
-        _darkness.color = _nightColor;
     }
 }
