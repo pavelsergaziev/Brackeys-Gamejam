@@ -212,31 +212,7 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3523938}
-  - component: {fileID: 3523940}
-  - component: {fileID: 3523939}
-  - component: {fileID: 3523941}
-  - component: {fileID: 3523944}
-  - component: {fileID: 3523943}
-  - component: {fileID: 3523942}
-  - component: {fileID: 3523960}
-  - component: {fileID: 3523959}
-  - component: {fileID: 3523958}
-  - component: {fileID: 3523957}
-  - component: {fileID: 3523956}
-  - component: {fileID: 3523955}
-  - component: {fileID: 3523954}
-  - component: {fileID: 3523953}
-  - component: {fileID: 3523952}
-  - component: {fileID: 3523951}
-  - component: {fileID: 3523950}
-  - component: {fileID: 3523949}
-  - component: {fileID: 3523948}
-  - component: {fileID: 3523947}
-  - component: {fileID: 3523946}
-  - component: {fileID: 3523945}
   m_Layer: 0
-  m_Name: Traps & Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
