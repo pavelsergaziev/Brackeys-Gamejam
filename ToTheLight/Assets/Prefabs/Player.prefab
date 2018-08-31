@@ -39,6 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1145424739696066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.88, y: -4.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,6 +80,7 @@ BoxCollider2D:
 <<<<<<< HEAD
   m_Offset: {x: -0.0024783015, y: -0.16109061}
 =======
+  m_Offset: {x: 0.000101566315, y: -0.17904235}
 >>>>>>> lamp-&-spikes
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -93,6 +95,7 @@ BoxCollider2D:
 <<<<<<< HEAD
   m_Size: {x: 0.49209464, y: 0.15504313}
 =======
+  m_Size: {x: 0.47145748, y: 0.10947129}
 >>>>>>> lamp-&-spikes
   m_EdgeRadius: 0
 --- !u!95 &95738953917148020
@@ -126,6 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minBlinkDelay: 1
   _maxBlinkDelay: 8
+  _colliderToTurnOnAfterTransformation: {fileID: 0}
+  _colliderToTurnOffAfterTransformation: {fileID: 0}
+  _mothColliderOffset: {x: 0.0001015663, y: -0.03868866}
+  _mothColliderSize: {x: 0.4714575, y: 0.2976961}
 --- !u!114 &114025018870360038
 MonoBehaviour:
   m_ObjectHideFlags: 1
