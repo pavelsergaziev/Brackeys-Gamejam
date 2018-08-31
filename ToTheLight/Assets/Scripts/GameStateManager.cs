@@ -51,6 +51,8 @@ public class GameStateManager : MonoBehaviour {
 
     private PlayerCondition _savedUnpausedPlayerCondition;
 
+    private SoundManager _soundManager;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -59,6 +61,7 @@ public class GameStateManager : MonoBehaviour {
         _screenLighting = FindObjectOfType<ScreenLighting>();
         _camera = FindObjectOfType <CameraController>();
         _screenFilterImage = _screenLighting.transform.GetComponent<Image>();
+        _soundManager = FindObjectOfType<SoundManager>();
 
         _inGameOverMenu = false;
     }
@@ -107,11 +110,13 @@ public class GameStateManager : MonoBehaviour {
 
     public void GameOverVictory()
     {
-        GameOver(_deathBurstVictory, _victoryScreenColor, _VictoryText);        
+        GameOver(_deathBurstVictory, _victoryScreenColor, _VictoryText);
+        _soundManager.FinishGame();
     }
 
     public void GameOverLoss()
     {
+        _soundManager.GameOver();
         GameOver(_deathBurstLoss, _lossScreenColor, _LossText);
     }
 

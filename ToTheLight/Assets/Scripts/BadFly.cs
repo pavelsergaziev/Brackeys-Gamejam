@@ -10,18 +10,21 @@ public class BadFly : BaseEnemy
     private int _patrolPointIndex = 0;
     public float patrolSphereRadious;
     public float followSpeed;
-    public float soundRange;
+
+    private float _soundRange = 6;
 
     private const  int  _patrolPointsCount = 10;
     private Sound _beeFlySound;
+    private AudioSource _audio;
 
     protected override void Start()
     {
         base.Start();
 
-        _soundManager.PlaySound("BeeFly");
-        _beeFlySound = _soundManager.GetSound("BeeFly");
-
+        
+        _audio = GetComponent<AudioSource>();
+        _audio.volume = 0f;
+        _audio.Play();
         _patrolPoints = new List<Vector3>();
         for (int i = 0; i < _patrolPointsCount; i++)
         {
@@ -66,20 +69,20 @@ public class BadFly : BaseEnemy
     
     void SoundControl()
     {
-        if (Vector3.Distance(transform.position, _player.transform.position) < soundRange)
+        if (Vector3.Distance(transform.position, _player.transform.position) < _soundRange)
         {
 
-            if (_beeFlySound.source.volume != 1)
+            if (_audio.volume <= .5f)
             {
-                _beeFlySound.source.volume = Mathf.Lerp(_beeFlySound.source.volume, _beeFlySound.volume, .05f);
+                _audio.volume = Mathf.Lerp(_audio.volume, .5f, .05f);
             }
 
         }
         else
         {
-            if (_beeFlySound.source.volume != 0)
+            if (_audio.volume >= 0)
             {
-                _beeFlySound.source.volume = Mathf.Lerp(_beeFlySound.source.volume, 0f, .05f);
+                _audio.volume = Mathf.Lerp(_audio.volume, 0f, .05f);
             }
         }
     }
